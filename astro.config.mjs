@@ -6,11 +6,16 @@ export default defineConfig({
     starlight({
       title: '苍书文档',
       defaultLocale: 'zh-cn',
-      // ✅ 确保有这一块
-      components: {
-        Header: './src/components/Header.astro',
-      },
-      // 其他配置...
+      // 社交链接 - 只留投诉
+      social: [
+        {
+          icon: 'warning',  // 使用内置的警告图标
+          label: '投诉',
+          href: 'https://doc.cs64.ink/report/',
+        },
+        // 如果有其他社交链接（比如github），可以留着
+        // 没有的话就只这一条
+      ],
     }),
   ],
 });
