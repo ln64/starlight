@@ -1,0 +1,60 @@
+---
+import Default from '@astrojs/starlight/components/Header.astro';
+---
+
+<Default />
+
+<!-- 在右上角添加两个按钮，放在深色模式切换旁边 -->
+<div style="display: flex; align-items: center; gap: 8px; margin-left: 10px;">
+  <!-- 分享按钮 -->
+  <button 
+    onclick="sharePage()"
+    style="
+      background: none;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      padding: 4px 8px;
+      font-size: 14px;
+      cursor: pointer;
+      color: #666;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    "
+    title="分享当前页面"
+  >
+    <span>📤</span> 分享
+  </button>
+  
+  <!-- 投诉按钮 -->
+  <a 
+    href="https://doc.cs64.ink/report/"
+    style="
+      background: none;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      padding: 4px 8px;
+      font-size: 14px;
+      cursor: pointer;
+      color: #666;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    "
+    title="投诉与举报"
+  >
+    <span>🚨</span> 投诉
+  </a>
+</div>
+
+<script>
+function sharePage() {
+  const url = window.location.href;
+  navigator.clipboard.writeText(url).then(() => {
+    alert('链接已复制到剪贴板！');
+  }).catch(() => {
+    alert('复制失败，请手动复制');
+  });
+}
+</script>
