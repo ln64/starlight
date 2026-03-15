@@ -4,7 +4,7 @@ import starlight from '@astrojs/starlight';
 export default defineConfig({
   integrations: [
     starlight({
-      title: '我的资源站',
+      title: '苍书文档',
       // 设置简体中文为默认语言
       defaultLocale: 'root',
       locales: {
