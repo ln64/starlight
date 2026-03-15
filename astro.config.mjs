@@ -4,17 +4,22 @@ import starlight from '@astrojs/starlight';
 export default defineConfig({
   integrations: [
     starlight({
-      title: '苍书文档',
+      title: '我的资源站',
+      // 设置简体中文为默认语言
       defaultLocale: 'zh-cn',
+      locales: {
+        'zh-cn': {
+          label: '简体中文',
+          lang: 'zh-CN',
+        },
+      },
       // 社交链接 - 只留投诉
       social: [
         {
-          icon: 'warning',  // 使用内置的警告图标
+          icon: 'warning',
           label: '投诉',
           href: 'https://doc.cs64.ink/report/',
         },
-        // 如果有其他社交链接（比如github），可以留着
-        // 没有的话就只这一条
       ],
     }),
   ],
