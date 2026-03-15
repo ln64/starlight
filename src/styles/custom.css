@@ -1,0 +1,37 @@
+/* 确保移动端导航栏有足够空间 */
+@media (max-width: 50rem) {
+  /* 让导航栏可以换行或调整内边距 */
+  .site-header {
+    flex-wrap: wrap;
+    padding: 0.5rem !important;
+  }
+  
+  /* 标题区域稍微缩小 */
+  .site-header .title-wrapper {
+    font-size: 0.9rem;
+  }
+  
+  /* 强制显示社交图标（投诉按钮所在区域） */
+  .site-header .social-icons {
+    display: flex !important;
+    margin-left: 0.5rem;
+  }
+  
+  /* 强制显示主题切换按钮 */
+  .site-header .theme-toggle {
+    display: flex !important;
+    margin-left: 0.5rem;
+  }
+  
+  /* 调整搜索框宽度，腾出空间 */
+  .site-header .search {
+    flex: 1;
+    min-width: 120px;
+  }
+  
+  /* 如果空间实在不够，可以让社交图标紧凑排列 */
+  .social-icons a,
+  .custom-complaint {
+    padding: 0.3rem !important;
+  }
+}
