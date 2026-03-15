@@ -4,8 +4,7 @@ import starlight from '@astrojs/starlight';
 export default defineConfig({
   integrations: [
     starlight({
-      title: '我的资源站',
-      // 设置简体中文为默认语言
+      title: '苍书文档',
       defaultLocale: 'zh-cn',
       locales: {
         'zh-cn': {
@@ -13,7 +12,10 @@ export default defineConfig({
           lang: 'zh-CN',
         },
       },
-      // 社交链接 - 只留投诉
+      // 引入自定义 CSS
+      customCss: [
+        './src/styles/custom.css',
+      ],
       social: [
         {
           icon: 'warning',
