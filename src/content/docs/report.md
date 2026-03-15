@@ -5,7 +5,7 @@ description: 提交你的投诉或举报
 
 <div style="background: #f9f9f9; border: 1px solid #eee; border-radius: 8px; padding: 20px; max-width: 600px; margin: 0 auto;">
 
-<p style="color: #666; margin-bottom: 20px;">匿名 · 90% 举报成功率</p>
+<p style="color: #666; margin-bottom: 20px;">如您发现有创作者使用本文档传播违规违禁、不良信息，请在下方提交。</p>
 
 <hr style="border: none; border-top: 1px solid #ddd; margin: 20px 0;" />
 
@@ -28,7 +28,20 @@ description: 提交你的投诉或举报
 </div>
 
 ### 3. 备注
-<textarea id="remarks" placeholder="请输入" rows="4" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; margin: 5px 0 15px 0; box-sizing: border-box; font-family: inherit;"></textarea>
+<textarea 
+  id="remarks" 
+  placeholder="请输入" 
+  rows="4"
+  style="width: 100%; 
+         height: 100px; 
+         padding: 8px; 
+         border: 1px solid #ccc; 
+         border-radius: 4px; 
+         margin: 5px 0 15px 0; 
+         box-sizing: border-box; 
+         font-family: inherit;
+         resize: none;"
+></textarea>
 
 ### 4. 昵称
 <input type="text" id="nickname" placeholder="请输入" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; margin: 5px 0 15px 0; box-sizing: border-box;" />
@@ -37,7 +50,7 @@ description: 提交你的投诉或举报
 <input type="text" id="phone" placeholder="请输入" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; margin: 5px 0 15px 0; box-sizing: border-box;" />
 
 <div style="text-align: center; margin: 30px 0;">
-  <button type="submit" id="submitBtn" style="background: #007bff; color: white; border: none; padding: 10px 30px; border-radius: 4px; font-size: 16px; cursor: pointer; opacity: 1;">提交</button>
+  <button type="submit" id="submitBtn" style="background: #007bff; color: white; border: none; padding: 10px 30px; border-radius: 4px; font-size: 16px; cursor: pointer;">提交</button>
 </div>
 
 </form>
@@ -48,7 +61,6 @@ description: 提交你的投诉或举报
 
 <script>
 function checkRequiredFields() {
-  // 检查必填项：网址和至少一个复选框
   const url = document.getElementById('url').value.trim();
   const checkboxes = document.querySelectorAll('#checkboxes input[type="checkbox"]');
   let atLeastOneChecked = false;
@@ -60,38 +72,36 @@ function checkRequiredFields() {
     }
   }
   
-  // 网址不能为空，且至少选一个复选框
   return url !== '' && atLeastOneChecked;
 }
 
 function handleSubmit(event) {
-  // 阻止表单默认提交
   event.preventDefault();
   
-  // 检查必填项
   if (!checkRequiredFields()) {
     alert('请填写违规网址并至少选择一项违规项目');
     return false;
   }
   
-  // 必填项已填，跳转到蓝奏云
   window.location.href = 'https://up.woozooo.com';
   return false;
 }
 
-// 可选：实时监测并改变按钮样式（不是必须的）
+// 按钮样式实时变化
 document.addEventListener('DOMContentLoaded', function() {
   const urlInput = document.getElementById('url');
   const checkboxes = document.querySelectorAll('#checkboxes input[type="checkbox"]');
+  const submitBtn = document.getElementById('submitBtn');
   
   function updateButtonStyle() {
-    const submitBtn = document.getElementById('submitBtn');
     if (checkRequiredFields()) {
       submitBtn.style.background = '#007bff';
       submitBtn.style.opacity = '1';
+      submitBtn.style.cursor = 'pointer';
     } else {
       submitBtn.style.background = '#cccccc';
       submitBtn.style.opacity = '0.7';
+      submitBtn.style.cursor = 'not-allowed';
     }
   }
   
