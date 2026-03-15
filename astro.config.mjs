@@ -5,15 +5,12 @@ export default defineConfig({
   integrations: [
     starlight({
       title: '苍书文档',
-      // 设置简体中文为默认语言
-      defaultLocale: 'root',
-      locales: {
-        // 将中文设为 root 语言，这样网址就是 /xxx 而不是 /zh-cn/xxx
-        root: {
-          label: '简体中文',
-          lang: 'zh-CN',
-        },
+      defaultLocale: 'zh-cn',
+      // ✅ 确保有这一块
+      components: {
+        Header: './src/components/Header.astro',
       },
+      // 其他配置...
     }),
   ],
 });
