@@ -4,24 +4,23 @@ import Default from '@astrojs/starlight/components/Header.astro';
 
 <Default />
 
-<!-- 在右上角添加两个按钮，放在深色模式切换旁边 -->
+<!-- 在右上角添加两个按钮 -->
 <div style="display: flex; align-items: center; gap: 8px; margin-left: 10px;">
-  <!-- 分享按钮 -->
+  <!-- 分享按钮 - 用更稳定的方式 -->
   <button 
-    onclick="sharePage()"
+    id="shareButton"
     style="
-      background: none;
-      border: 1px solid #ddd;
+      background: var(--sl-color-gray-6);
+      border: 1px solid var(--sl-color-gray-5);
       border-radius: 4px;
       padding: 4px 8px;
       font-size: 14px;
       cursor: pointer;
-      color: #666;
+      color: var(--sl-color-text);
       display: flex;
       align-items: center;
       gap: 4px;
     "
-    title="分享当前页面"
   >
     <span>📤</span> 分享
   </button>
@@ -30,31 +29,71 @@ import Default from '@astrojs/starlight/components/Header.astro';
   <a 
     href="https://doc.cs64.ink/report/"
     style="
-      background: none;
-      border: 1px solid #ddd;
+      background: var(--sl-color-gray-6);
+      border: 1px solid var(--sl-color-gray-5);
       border-radius: 4px;
       padding: 4px 8px;
       font-size: 14px;
       cursor: pointer;
-      color: #666;
+      color: var(--sl-color-text);
       text-decoration: none;
       display: flex;
       align-items: center;
       gap: 4px;
     "
-    title="投诉与举报"
   >
     <span>🚨</span> 投诉
   </a>
 </div>
 
 <script>
-function sharePage() {
-  const url = window.location.href;
-  navigator.clipboard.writeText(url).then(() => {
-    alert('链接已复制到剪贴板！');
-  }).catch(() => {
-    alert('复制失败，请手动复制');
-  });
+// 等待页面加载完成
+document.addEventListener('DOMContentLoaded', function() {
+  // 获取分享按钮
+  const shareBtn = document.getElementById('shareButton');
+  
+  if (shareBtn) {
+    shareBtn.addEventListener('click', function() {
+      // 获取当前页面URL
+      const url = window.location.href;
+      
+      // 尝试使用现代复制API
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(url).then(function() {
+          alert('✅ 链接已复制到剪贴板！');
+        }).catch(function(err) {
+          console.error('复制失败:', err);
+          fallbackCopy(url);
+        });
+      } else {
+        // 降级方案：使用传统方式
+        fallbackCopy(url);
+      }
+    });
+  }
+});
+
+// 降级复制方法（兼容旧浏览器）
+function fallbackCopy(text) {
+  const textarea = document.createElement('textarea');
+  textarea.value = text;
+  textarea.style.position = 'fixed';
+  textarea.style.opacity = '0';
+  document.body.appendChild(textarea);
+  textarea.select();
+  textarea.setSelectionRange(0, 99999);
+  
+  try {
+    const successful = document.execCommand('copy');
+    if (successful) {
+      alert('✅ 链接已复制到剪贴板！');
+    } else {
+      alert('❌ 复制失败，请手动复制');
+    }
+  } catch (err) {
+    alert('❌ 复制失败，请手动复制');
+  }
+  
+  document.body.removeChild(textarea);
 }
 </script>
