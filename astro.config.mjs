@@ -5,17 +5,28 @@ export default defineConfig({
   integrations: [
     starlight({
       title: '苍书文档',
-      defaultLocale: 'zh-cn',
+      // 使用 root 语言，这样文件直接放在 docs/ 下
+      defaultLocale: 'root',
       locales: {
-        'zh-cn': {
+        root: {
           label: '简体中文',
           lang: 'zh-CN',
         },
       },
-      // 引入自定义 CSS
-      customCss: [
-        './src/styles/custom.css',
+      // 侧边栏导航
+      sidebar: [
+        {
+          label: '指南',
+          items: [
+            { label: '示例指南', link: '/guides/example/' },
+          ],
+        },
+        {
+          label: '参考',
+          autogenerate: { directory: 'reference' },
+        },
       ],
+      // 社交链接（投诉按钮）
       social: [
         {
           icon: 'warning',
