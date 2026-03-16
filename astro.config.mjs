@@ -12,10 +12,6 @@ export default defineConfig({
           lang: 'zh-CN',
         },
       },
-      // 使用自定义头部组件
-      components: {
-        Header: './src/components/CustomHeader.astro',
-      },
       sidebar: [
         {
           label: '指南',
@@ -28,7 +24,13 @@ export default defineConfig({
           autogenerate: { directory: 'reference' },
         },
       ],
-      // ❗ 重要：删除 social 配置，因为我们在自定义组件里已经加了投诉按钮
+      social: [
+        {
+          icon: 'warning',
+          label: '投诉',
+          href: '/report/',
+        },
+      ],
     }),
   ],
 });
