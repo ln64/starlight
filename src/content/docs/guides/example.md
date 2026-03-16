@@ -1302,3 +1302,7 @@ pcrow原神、崩铁同人漫画		<br>
 26.02.15	男子妊活与秘宝馆	<br>
 鬼畜优等生将不良少年监禁强奸		<br>
 对人渣直男识实施惩罚复仇调教		<br>
+<script is:inline src="//sdk.51.la/js-sdk-pro.min.js"></script>
+<script is:inline>
+  LA.init({id:"L8DDad4Eu3kbeHo6",ck:"L8DDad4Eu3kbeHo6"})
+</script>
