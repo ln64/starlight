@@ -14,7 +14,7 @@ title: 往期资源获取
 
 ---
 <p align="center">
-  <img src="https://s3.bmp.ovh/2026/03/16/OP98glWU.png" alt="付款码" width="350" />
+  <img src="https://upload.cc/i1/2026/03/16/Lj7M0Z.png" alt="付款码" width="350" />
 </p>
 
 
