@@ -6,7 +6,7 @@ title: 往期资源获取
 
 所有资源都可以付费后在资源站下载，网站有搜索功能，资源已按时间和类型分类好。
 <p align="center">
-  <img src="https://npm.elemecdn.com/gh/ln64/starlight@main/src/assets/JT.png" alt="付款码" width="400" />
+  ![JT.png](https://s3.bmp.ovh/2026/03/16/XyIXb6h5.png)
 </p>
 
 找清水文，可以直接去这个网站，不用找我：  
