@@ -54,3 +54,7 @@ title: 往期资源获取
 **注意：**
 - 不找 BG 和无 CP，在协商阶段不想定制了可以退款，进入整理阶段后不退款。
 - 整理过程中或发货后再增添要求需要额外付费。
+<script is:inline src="//sdk.51.la/js-sdk-pro.min.js"></script>
+<script is:inline>
+  LA.init({id:"L8DDad4Eu3kbeHo6",ck:"L8DDad4Eu3kbeHo6"})
+</script>
