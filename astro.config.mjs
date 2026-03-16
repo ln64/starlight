@@ -12,6 +12,10 @@ export default defineConfig({
           lang: 'zh-CN',
         },
       },
+      // ✅ 加上这一块，覆盖默认布局
+      components: {
+        Layout: './src/layouts/Layout.astro',
+      },
       customCss: [
         './src/styles/custom.css',
       ],
@@ -21,13 +25,13 @@ export default defineConfig({
           link: '/',
         },
         {
-          label: '指南',
+          label: '往期资源目录',
           items: [
             { label: '示例指南', link: '/guides/example/' },
           ],
         },
         {
-          label: '参考',
+          label: '获取往期',
           autogenerate: { directory: 'reference' },
         },
       ],
