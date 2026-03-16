@@ -15,7 +15,7 @@ title: 往期资源获取
 ---
 
 <p align="center">
-  <img src="[https://s3.bmp.ovh/2026/03/16/XyIXb6h5.png](https://s3.bmp.ovh/2026/03/16/OP98glWU.png)" alt="付款码" width="300" />
+  <img src="https://s3.bmp.ovh/2026/03/16/OP98glWU.png" alt="付款码" width="300" />
 </p>
 
 #### ① 只需要单本或单合集
