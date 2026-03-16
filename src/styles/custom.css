@@ -1,28 +1,26 @@
-/* 给投诉图标加上文字 - 精确选择器 */
-a[href="/report/"] svg + *,
-a[href="/report/"]::after {
-  display: none !important;
-}
-
-a[href="/report/"] svg {
-  margin-right: 4px;
-}
-
+/* 投诉图标容器 */
 a[href="/report/"] {
   display: inline-flex !important;
   align-items: center;
   gap: 4px;
+  text-decoration: none !important;  /* 去掉下划线 */
 }
 
-a[href="/report/"]::before {
+/* 投诉文字样式 */
+a[href="/report/"]::after {
   content: "投诉";
   font-size: 14px;
-  order: 2;
+  margin-left: 2px;
 }
 
-/* 移动端隐藏文字 */
+/* 强制所有设备（包括移动端折叠）都显示文字 */
 @media (max-width: 50rem) {
-  a[href="/report/"]::before {
-    display: none;
+  a[href="/report/"]::after {
+    display: inline-block !important;  /* 强制显示 */
+  }
+  
+  /* 如果折叠菜单里有投诉图标，也要显示文字 */
+  .mobile-nav .social-icons a[href="/report/"]::after {
+    display: inline-block !important;
   }
 }
