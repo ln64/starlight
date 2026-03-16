@@ -5,8 +5,6 @@ description: 提交你的投诉或举报
 
 <div style="background: var(--sl-color-gray-7); border: 1px solid var(--sl-color-gray-5); border-radius: 8px; padding: 20px; max-width: 600px; margin: 0 auto; color: var(--sl-color-text);">
 
-<p style="color: var(--sl-color-gray-2); margin-bottom: 20px;">匿名 · 90% 举报成功率</p>
-
 <hr style="border: none; border-top: 1px solid var(--sl-color-gray-5); margin: 20px 0;" />
 
 <form id="complaintForm" onsubmit="return handleSubmit(event)">
@@ -85,7 +83,7 @@ function handleSubmit(event) {
     return false;
   }
   
-  window.location.href = 'https://up.woozooo.com';
+  window.location.href = 'https://sourl.cn/7Wswp3';
   return false;
 }
 
