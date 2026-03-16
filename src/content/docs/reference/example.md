@@ -17,7 +17,7 @@ title: 往期资源获取
 
 
 <p align="center">
-  <img src="https://cdn.jsdelivr.net/gh/ln64/starlight@main/src/assets/fk.png" alt="付款码" width="350" />
+  <img src="https://cdn.jsdelivr.net/gh/ln64/starlight@main/src/assets/fk.png" alt="付款码" width="300" />
 </p>
 
 #### ① 只需要单本或单合集
