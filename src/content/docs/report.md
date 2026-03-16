@@ -54,7 +54,6 @@ description: 提交你的投诉或举报
 
 </form>
 
-<p style="color: var(--sl-color-gray-2); font-size: 14px; text-align: center; margin-top: 20px;">📧 正式投诉请发送邮件至：cscs9964@gmail.com</p>
 
 </div>
 
