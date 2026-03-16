@@ -12,10 +12,10 @@ export default defineConfig({
           lang: 'zh-CN',
         },
       },
-      // 引入自定义 CSS ⬇️ 确认有这个！
-      customCss: [
-        './src/styles/custom.css',
-      ],
+      // 使用自定义头部组件
+      components: {
+        Header: './src/components/CustomHeader.astro',
+      },
       sidebar: [
         {
           label: '指南',
@@ -28,13 +28,8 @@ export default defineConfig({
           autogenerate: { directory: 'reference' },
         },
       ],
-      social: [
-        {
-          icon: 'warning',
-          label: '投诉',
-          href: 'https://doc.cs64.ink/report/',
-        },
-      ],
+      // 移除 social 配置（因为我们已经在自定义头部里加了投诉按钮）
+      // social: [],
     }),
   ],
 });
