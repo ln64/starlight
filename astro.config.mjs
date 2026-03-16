@@ -5,7 +5,6 @@ export default defineConfig({
   integrations: [
     starlight({
       title: '苍书文档',
-      // 使用 root 语言，这样文件直接放在 docs/ 下
       defaultLocale: 'root',
       locales: {
         root: {
@@ -13,7 +12,10 @@ export default defineConfig({
           lang: 'zh-CN',
         },
       },
-      // 侧边栏导航
+      // 引入自定义 CSS ⬇️ 确认有这个！
+      customCss: [
+        './src/styles/custom.css',
+      ],
       sidebar: [
         {
           label: '指南',
@@ -26,7 +28,6 @@ export default defineConfig({
           autogenerate: { directory: 'reference' },
         },
       ],
-      // 社交链接（投诉按钮）
       social: [
         {
           icon: 'warning',
