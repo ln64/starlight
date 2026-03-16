@@ -1,13 +1,28 @@
-/* 给投诉图标加上文字 */
-.site-header a[href*="report"]::after {
-  content: "投诉";
-  margin-left: 4px;
-  font-size: 14px;
+/* 给投诉图标加上文字 - 精确选择器 */
+a[href="/report/"] svg + *,
+a[href="/report/"]::after {
+  display: none !important;
 }
 
-/* 移动端如果空间不够，文字自动隐藏（这是默认行为，可不写） */
+a[href="/report/"] svg {
+  margin-right: 4px;
+}
+
+a[href="/report/"] {
+  display: inline-flex !important;
+  align-items: center;
+  gap: 4px;
+}
+
+a[href="/report/"]::before {
+  content: "投诉";
+  font-size: 14px;
+  order: 2;
+}
+
+/* 移动端隐藏文字 */
 @media (max-width: 50rem) {
-  .site-header a[href*="report"]::after {
+  a[href="/report/"]::before {
     display: none;
   }
 }
