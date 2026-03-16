@@ -1,9 +1,10 @@
+/* ===== 投诉图标样式 ===== */
 /* 投诉图标容器 */
 a[href="/report/"] {
   display: inline-flex !important;
   align-items: center;
   gap: 4px;
-  text-decoration: none !important;  /* 去掉下划线 */
+  text-decoration: none !important;
 }
 
 /* 投诉文字样式 */
@@ -11,16 +12,39 @@ a[href="/report/"]::after {
   content: "投诉";
   font-size: 14px;
   margin-left: 2px;
+  display: inline-block !important;
 }
 
-/* 强制所有设备（包括移动端折叠）都显示文字 */
+/* 移动端折叠菜单里的投诉图标 */
 @media (max-width: 50rem) {
-  a[href="/report/"]::after {
-    display: inline-block !important;  /* 强制显示 */
+  .mobile-nav a[href="/report/"] {
+    display: flex !important;
+    align-items: center;
+    gap: 8px;
+    padding: 0.5rem !important;
   }
   
-  /* 如果折叠菜单里有投诉图标，也要显示文字 */
-  .mobile-nav .social-icons a[href="/report/"]::after {
+  .mobile-nav a[href="/report/"]::after {
+    content: "投诉";
+    font-size: 14px;
+    margin-left: 2px;
     display: inline-block !important;
   }
+}
+
+/* ===== 表格居中样式 ===== */
+/* 让所有表格居中 */
+table {
+  margin-left: auto !important;
+  margin-right: auto !important;
+  width: fit-content !important;
+  max-width: 100%;
+}
+
+/* 表格容器也居中 */
+.wp-block-table,
+figure.table {
+  margin-left: auto !important;
+  margin-right: auto !important;
+  width: fit-content !important;
 }
