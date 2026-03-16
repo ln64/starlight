@@ -12,11 +12,14 @@ export default defineConfig({
           lang: 'zh-CN',
         },
       },
-      // ✅ 加上这一块：引入自定义 CSS
       customCss: [
         './src/styles/custom.css',
       ],
       sidebar: [
+        {
+          label: '首页',
+          link: '/',
+        },
         {
           label: '指南',
           items: [
