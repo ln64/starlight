@@ -22,7 +22,7 @@ export default defineConfig({
         },
         {
           label: '资源更新',
-          link: '/资源更新/',
+          link: '/resources/',
         },
         {
           label: '指南',
