@@ -1,10 +1,10 @@
 /* ===== 投诉图标样式 ===== */
 /* 投诉图标容器 */
 a[href="/report/"] {
-  display: inline-flex !important;
+  display: inline-flex;
   align-items: center;
   gap: 4px;
-  text-decoration: none !important;
+  text-decoration: none;
 }
 
 /* 投诉文字样式 */
@@ -12,39 +12,87 @@ a[href="/report/"]::after {
   content: "投诉";
   font-size: 14px;
   margin-left: 2px;
-  display: inline-block !important;
+  display: inline-block;
 }
 
 /* 移动端折叠菜单里的投诉图标 */
 @media (max-width: 50rem) {
   .mobile-nav a[href="/report/"] {
-    display: flex !important;
+    display: flex;
     align-items: center;
     gap: 8px;
-    padding: 0.5rem !important;
+    padding: 0.5rem;
   }
   
   .mobile-nav a[href="/report/"]::after {
     content: "投诉";
     font-size: 14px;
     margin-left: 2px;
-    display: inline-block !important;
+    display: inline-block;
   }
 }
 
 /* ===== 表格居中样式 ===== */
 /* 让所有表格居中 */
 table {
-  margin-left: auto !important;
-  margin-right: auto !important;
-  width: fit-content !important;
+  margin-left: auto;
+  margin-right: auto;
+  width: fit-content;
   max-width: 100%;
 }
 
 /* 表格容器也居中 */
 .wp-block-table,
 figure.table {
-  margin-left: auto !important;
-  margin-right: auto !important;
-  width: fit-content !important;
+  margin-left: auto;
+  margin-right: auto;
+  width: fit-content;
+}
+
+/* ===== 百度浏览器兼容补丁 ===== */
+/* 检测 T7 内核（百度浏览器）并应用降级样式 */
+@media all and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: .001dpcm) {
+  /* 针对百度浏览器的特殊 hack */
+  _:-ms-lang(x), _:-webkit-full-screen, table {
+    /* 修复表格错位 */
+    table-layout: fixed !important;
+    word-break: break-word !important;
+  }
+  
+  /* 修复 flex 布局 */
+  _:-ms-lang(x), _:-webkit-full-screen, [style*="display: flex"] {
+    display: block !important;
+    text-align: center !important;
+  }
+  
+  _:-ms-lang(x), _:-webkit-full-screen, [style*="display: flex"] a {
+    display: inline-block !important;
+    margin: 0.5rem !important;
+    white-space: normal !important;
+  }
+  
+  /* 修复表格单元格溢出 */
+  _:-ms-lang(x), _:-webkit-full-screen, td,
+  _:-ms-lang(x), _:-webkit-full-screen, th {
+    white-space: normal !important;
+    overflow: visible !important;
+  }
+}
+
+/* 针对不支持 gap 的浏览器（包括百度浏览器） */
+@supports not (gap: 1rem) {
+  table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+  }
+  
+  [style*="display: flex"] {
+    display: block !important;
+    text-align: center !important;
+  }
+  
+  [style*="display: flex"] a {
+    display: inline-block !important;
+    margin: 0.25rem !important;
+  }
 }
