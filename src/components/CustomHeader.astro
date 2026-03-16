@@ -6,10 +6,10 @@ import { Icon } from '@astrojs/starlight/components';
 <!-- 保留原有头部结构 -->
 <Default />
 
-<!-- 自定义投诉按钮（永远显示） -->
+<!-- 自定义投诉按钮（放在右上角） -->
 <div class="custom-complaint-wrapper">
   <a 
-    href="https://doc.cs64.ink/report/"
+    href="/report/"  // 改成相对路径，确保跳转到你的投诉页面
     class="custom-complaint"
     aria-label="投诉"
     title="投诉与举报"
@@ -25,12 +25,12 @@ import { Icon } from '@astrojs/starlight/components';
     display: none !important;
   }
   
-  /* 隐藏默认的社交图标（避免重复） */
+  /* 隐藏默认的社交图标区域 */
   .site-header .social-icons {
     display: none !important;
   }
   
-  /* 自定义投诉按钮样式 */
+  /* 自定义投诉按钮容器 */
   .custom-complaint-wrapper {
     display: flex;
     align-items: center;
@@ -75,7 +75,7 @@ import { Icon } from '@astrojs/starlight/components';
     }
     
     .custom-complaint .complaint-text {
-      display: none; /* 移动端只显示图标，不显示文字，节省空间 */
+      display: none; /* 移动端只显示图标 */
     }
     
     .custom-complaint svg {
@@ -83,7 +83,6 @@ import { Icon } from '@astrojs/starlight/components';
       height: 1.5rem;
     }
     
-    /* 让搜索框换行到第二行 */
     .site-header .search {
       order: 999 !important;
       width: 100% !important;
