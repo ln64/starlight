@@ -25,9 +25,9 @@ export default defineConfig({
           link: '/',
         },
         {
-          label: '往期资源目录',
+          label: '资源目录',
           items: [
-            { label: '示例指南', link: '/guides/example/' },
+            { label: '往期更新目录', link: '/guides/example/' },
           ],
         },
         {
