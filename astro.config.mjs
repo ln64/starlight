@@ -28,8 +28,7 @@ export default defineConfig({
           autogenerate: { directory: 'reference' },
         },
       ],
-      // 移除 social 配置（因为我们已经在自定义头部里加了投诉按钮）
-      // social: [],
+      // ❗ 重要：删除 social 配置，因为我们在自定义组件里已经加了投诉按钮
     }),
   ],
 });
