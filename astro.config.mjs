@@ -12,9 +12,9 @@ export default defineConfig({
           lang: 'zh-CN',
         },
       },
-      // ✅ 改用 overrideComponents
-      overrideComponents: {
-        'Layout': './src/layouts/Layout.astro',
+      // ✅ 正确的写法：用 components，不是 overrideComponents
+      components: {
+        Layout: './src/layouts/Layout.astro',
       },
       customCss: [
         './src/styles/custom.css',
