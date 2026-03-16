@@ -5,13 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <!-- 51.la 统计代码 -->
-    <script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
-    <script>
+    <script is:inline src="//sdk.51.la/js-sdk-pro.min.js"></script>
+    <script is:inline>
       LA.init({id:"L8DDad4Eu3kbeHo6",ck:"L8DDad4Eu3kbeHo6"})
     </script>
   </head>
   <body>
-  <div style="background:red; color:white; padding:10px; text-align:center;">测试：自定义布局已生效！</div>
-    <slot />  <!-- 这是 Astro 的关键标签，用于渲染子内容 -->
+    <slot />  <!-- 这行必须保留！所有页面内容都会渲染在这里 -->
   </body>
 </html>
