@@ -12,9 +12,9 @@ export default defineConfig({
           lang: 'zh-CN',
         },
       },
-      // ✅ 加上这一块，覆盖默认布局
-      components: {
-        Layout: './src/layouts/Layout.astro',
+      // ✅ 改用 overrideComponents
+      overrideComponents: {
+        'Layout': './src/layouts/Layout.astro',
       },
       customCss: [
         './src/styles/custom.css',
