@@ -6,7 +6,7 @@ title: 往期资源获取
 
 所有资源都可以付费后在资源站下载，网站有搜索功能，资源已按时间和类型分类好。
 <p align="center">
-  <img src="https://cdn.jsdelivr.net/gh/ln64/starlight@main/src/assets/JT.png" alt="付款码" width="350" />
+  <img src="https://cdn.jsdelivr.net/gh/ln64/starlight@main/src/assets/JT.png" alt="付款码" width="400" />
 </p>
 
 找清水文，可以直接去这个网站，不用找我：  
@@ -16,7 +16,9 @@ title: 往期资源获取
 
 
 
-### 1. 点我看付款码！
+<p align="center">
+  <img src="https://cdn.jsdelivr.net/gh/ln64/starlight@main/src/assets/fk.png" alt="付款码" width="350" />
+</p>
 
 #### ① 只需要单本或单合集
 
