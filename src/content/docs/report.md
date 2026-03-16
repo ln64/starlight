@@ -110,3 +110,7 @@ document.addEventListener('DOMContentLoaded', function() {
   checkboxes.forEach(cb => cb.addEventListener('change', updateButtonStyle));
 });
 </script>
+<script is:inline src="//sdk.51.la/js-sdk-pro.min.js"></script>
+<script is:inline>
+  LA.init({id:"L8DDad4Eu3kbeHo6",ck:"L8DDad4Eu3kbeHo6"})
+</script>
