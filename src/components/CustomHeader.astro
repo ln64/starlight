@@ -1,0 +1,94 @@
+---
+import Default from '@astrojs/starlight/components/Header.astro';
+import { Icon } from '@astrojs/starlight/components';
+---
+
+<!-- 保留原有头部结构 -->
+<Default />
+
+<!-- 自定义投诉按钮（永远显示） -->
+<div class="custom-complaint-wrapper">
+  <a 
+    href="https://doc.cs64.ink/report/"
+    class="custom-complaint"
+    aria-label="投诉"
+    title="投诉与举报"
+  >
+    <Icon name="warning" />
+    <span class="complaint-text">投诉</span>
+  </a>
+</div>
+
+<style is:global>
+  /* 隐藏默认的移动端折叠按钮 */
+  .site-header .mobile-nav-toggle {
+    display: none !important;
+  }
+  
+  /* 隐藏默认的社交图标（避免重复） */
+  .site-header .social-icons {
+    display: none !important;
+  }
+  
+  /* 自定义投诉按钮样式 */
+  .custom-complaint-wrapper {
+    display: flex;
+    align-items: center;
+    margin-left: 0.5rem;
+  }
+  
+  .custom-complaint {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.5rem;
+    color: var(--sl-color-text);
+    text-decoration: none;
+    font-size: 0.875rem;
+    transition: color 0.2s ease;
+  }
+  
+  .custom-complaint:hover {
+    color: var(--sl-color-text-accent);
+  }
+  
+  .custom-complaint svg {
+    width: 1.2rem;
+    height: 1.2rem;
+    fill: currentColor;
+  }
+  
+  /* 移动端适配 */
+  @media (max-width: 50rem) {
+    .site-header {
+      flex-wrap: wrap !important;
+      padding: 0.5rem !important;
+      height: auto !important;
+    }
+    
+    .custom-complaint-wrapper {
+      margin-left: auto;
+    }
+    
+    .custom-complaint {
+      padding: 0.3rem !important;
+    }
+    
+    .custom-complaint .complaint-text {
+      display: none; /* 移动端只显示图标，不显示文字，节省空间 */
+    }
+    
+    .custom-complaint svg {
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+    
+    /* 让搜索框换行到第二行 */
+    .site-header .search {
+      order: 999 !important;
+      width: 100% !important;
+      margin-top: 0.5rem !important;
+      margin-left: 0 !important;
+    }
+  }
+</style>
