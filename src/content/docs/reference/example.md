@@ -8,7 +8,7 @@ title: 往期资源获取
 
 找清水文，可以直接去这个网站，不用找我：  
 [https://www.aqxsw888.com](https://www.aqxsw888.com)
-
+![付款码](../../assets/JT.png)
 ---
 
 
