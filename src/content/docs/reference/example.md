@@ -1,11 +1,11 @@
 ---
 title: 往期资源获取
 ---
-![付款码](https://cdn.jsdelivr.net/gh/ln64/starlight@main/src/assets/JT.png)
+
 往期内容主要是 BL 小说，少量 GB 和无 CP，各小说网的都有，海废米 cp 等。分享过各类型合集 600+，动画 200+，漫画 150+，熟肉日抓 120+，往期资源大小在 300G 以上。
 
 所有资源都可以付费后在资源站下载，网站有搜索功能，资源已按时间和类型分类好。
-
+![付款码](https://cdn.jsdelivr.net/gh/ln64/starlight@main/src/assets/JT.png)
 找清水文，可以直接去这个网站，不用找我：  
 [https://www.aqxsw888.com](https://www.aqxsw888.com)
 
