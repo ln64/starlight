@@ -1,37 +1,55 @@
 /* 确保移动端导航栏有足够空间 */
 @media (max-width: 50rem) {
-  /* 让导航栏可以换行或调整内边距 */
+  /* 让导航栏可以换行 */
   .site-header {
-    flex-wrap: wrap;
+    flex-wrap: wrap !important;
     padding: 0.5rem !important;
+    height: auto !important;
+    min-height: 4rem;
   }
   
   /* 标题区域稍微缩小 */
   .site-header .title-wrapper {
-    font-size: 0.9rem;
+    font-size: 0.9rem !important;
+    white-space: nowrap;
   }
   
   /* 强制显示社交图标（投诉按钮所在区域） */
   .site-header .social-icons {
     display: flex !important;
-    margin-left: 0.5rem;
+    margin-left: 0.5rem !important;
+    flex-shrink: 0;
   }
   
   /* 强制显示主题切换按钮 */
   .site-header .theme-toggle {
     display: flex !important;
-    margin-left: 0.5rem;
+    margin-left: 0.5rem !important;
+    flex-shrink: 0;
   }
   
-  /* 调整搜索框宽度，腾出空间 */
+  /* 让搜索框独占一行，放在最下面 */
   .site-header .search {
-    flex: 1;
-    min-width: 120px;
+    order: 999 !important;
+    width: 100% !important;
+    margin-top: 0.5rem !important;
+    margin-left: 0 !important;
+    flex: 0 0 100%;
   }
   
-  /* 如果空间实在不够，可以让社交图标紧凑排列 */
+  /* 调整搜索框内部元素 */
+  .site-header .search input {
+    width: 100%;
+  }
+  
+  /* 社交图标紧凑排列 */
   .social-icons a,
   .custom-complaint {
     padding: 0.3rem !important;
+  }
+  
+  /* 确保移动端菜单按钮隐藏（如果你不想用折叠菜单） */
+  .site-header .mobile-nav-toggle {
+    display: none !important;
   }
 }
