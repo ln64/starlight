@@ -33,20 +33,35 @@ a[href="/report/"]::after {
 }
 
 /* ===== 表格居中样式 ===== */
-/* 让所有表格居中 */
+/* 让所有表格强制居中（使用 !important 确保优先级） */
 table {
-  margin-left: auto;
-  margin-right: auto;
-  width: fit-content;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  width: fit-content !important;
   max-width: 100%;
+  float: none !important;
+  clear: both !important;
+}
+
+/* 针对你的表格特殊处理 */
+table[style*="max-width: 800px"] {
+  margin-left: auto !important;
+  margin-right: auto !important;
+  display: table !important;
 }
 
 /* 表格容器也居中 */
 .wp-block-table,
 figure.table {
-  margin-left: auto;
-  margin-right: auto;
-  width: fit-content;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  width: fit-content !important;
+  text-align: center !important;
+}
+
+/* 防止被外层容器影响 */
+div:has(> table) {
+  text-align: center !important;
 }
 
 /* ===== 百度浏览器兼容补丁 ===== */
@@ -57,6 +72,8 @@ figure.table {
     /* 修复表格错位 */
     table-layout: fixed !important;
     word-break: break-word !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
   }
   
   /* 修复 flex 布局 */
@@ -84,6 +101,8 @@ figure.table {
   table {
     width: 100% !important;
     border-collapse: collapse !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
   }
   
   [style*="display: flex"] {
