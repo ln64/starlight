@@ -3,13 +3,13 @@ import Default from '@astrojs/starlight/components/Header.astro';
 import { Icon } from '@astrojs/starlight/components';
 ---
 
-<!-- 保留原有头部结构 -->
+<!-- 保留完整的默认头部（包含搜索框和主题切换） -->
 <Default />
 
-<!-- 自定义投诉按钮（放在右上角） -->
+<!-- 自定义投诉按钮，放在右侧 -->
 <div class="custom-complaint-wrapper">
   <a 
-    href="/report/"  // 改成相对路径，确保跳转到你的投诉页面
+    href="/report/"
     class="custom-complaint"
     aria-label="投诉"
     title="投诉与举报"
@@ -20,21 +20,12 @@ import { Icon } from '@astrojs/starlight/components';
 </div>
 
 <style is:global>
-  /* 隐藏默认的移动端折叠按钮 */
-  .site-header .mobile-nav-toggle {
-    display: none !important;
-  }
-  
-  /* 隐藏默认的社交图标区域 */
-  .site-header .social-icons {
-    display: none !important;
-  }
-  
-  /* 自定义投诉按钮容器 */
+  /* 自定义投诉按钮样式 */
   .custom-complaint-wrapper {
     display: flex;
     align-items: center;
     margin-left: 0.5rem;
+    order: 100; /* 确保它在右侧 */
   }
   
   .custom-complaint {
@@ -58,24 +49,43 @@ import { Icon } from '@astrojs/starlight/components';
     fill: currentColor;
   }
   
-  /* 移动端适配 */
+  /* 移动端适配 - 所有元素都在一行，不折叠 */
   @media (max-width: 50rem) {
+    /* 头部容器：允许换行但不折叠图标 */
     .site-header {
       flex-wrap: wrap !important;
       padding: 0.5rem !important;
       height: auto !important;
+      min-height: 4rem;
     }
     
+    /* 标题区域：适当缩小 */
+    .site-header .title-wrapper {
+      font-size: 0.9rem !important;
+      white-space: nowrap;
+    }
+    
+    /* 社交图标区域：保持显示 */
+    .site-header .social-icons {
+      display: flex !important;
+      margin-left: 0.5rem !important;
+    }
+    
+    /* 主题切换按钮：保持显示 */
+    .site-header .theme-toggle {
+      display: flex !important;
+      margin-left: 0.5rem !important;
+    }
+    
+    /* 投诉按钮容器：调整位置 */
     .custom-complaint-wrapper {
       margin-left: auto;
+      order: 2;
     }
     
-    .custom-complaint {
-      padding: 0.3rem !important;
-    }
-    
+    /* 投诉按钮：移动端只显示图标 */
     .custom-complaint .complaint-text {
-      display: none; /* 移动端只显示图标 */
+      display: none;
     }
     
     .custom-complaint svg {
@@ -83,11 +93,18 @@ import { Icon } from '@astrojs/starlight/components';
       height: 1.5rem;
     }
     
+    /* 搜索框：单独放一行 */
     .site-header .search {
       order: 999 !important;
       width: 100% !important;
       margin-top: 0.5rem !important;
       margin-left: 0 !important;
+      flex: 0 0 100% !important;
+    }
+    
+    /* 隐藏移动端折叠按钮（如果有） */
+    .site-header .mobile-nav-toggle {
+      display: none !important;
     }
   }
 </style>
