@@ -14,7 +14,7 @@ title: 往期资源获取
 
 ---
 <p align="center">
-  <img src="https://s3.bmp.ovh/2026/03/16/OP98glWU.png" alt="付款码" width="350" />
+  <img src="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAER5qppvq7llJ2U_16yiESyoq6_l8GOTAACZx4AAjFS-VWLccSNUPj6fDoE.png" alt="付款码" width="350" />
 </p>
 
 
