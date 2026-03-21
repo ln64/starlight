@@ -16,7 +16,7 @@ title: 往期资源获取
 <p align="center">
   <img src="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAER5qppvq7llJ2U_16yiESyoq6_l8GOTAACZx4AAjFS-VWLccSNUPj6fDoE.png" alt="付款码" width="350" />
 </p>
-
+![BQACAgUAAyEGAASHRsPbAAER5qppvq7llJ2U_16yiESyoq6_l8GOTAACZx4AAjFS-VWLccSNUPj6fDoE.png](https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAER5qppvq7llJ2U_16yiESyoq6_l8GOTAACZx4AAjFS-VWLccSNUPj6fDoE.png)
 
 #### ① 只需要单本或单合集
 
