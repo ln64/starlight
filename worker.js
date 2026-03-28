@@ -1,4 +1,4 @@
-const BLOCK_PAGE = `<!DOCTYPE html>
+const BLOCK_PAGE = (originalUrl) => `<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
@@ -47,13 +47,12 @@ h1 { font-size: 20px; color: #1a73e8; margin-bottom: 10px; font-weight: 600; }
         <div class="step"><div class="step-num">2</div><div class="step-text">打开手机浏览器（Safari / Chrome / 系统浏览器）</div></div>
         <div class="step"><div class="step-num">3</div><div class="step-text">粘贴到地址栏即可正常访问</div></div>
     </div>
-    <div class="url-box" id="url-box">加载中...</div>
+    <div class="url-box" id="url-box">${originalUrl}</div>
     <button class="copy-btn" onclick="copyUrl()">📋 复制链接</button>
     <div class="tip" id="tip">✅ 已复制，请打开浏览器粘贴访问</div>
 </div>
 <script>
-var url = decodeURIComponent(new URLSearchParams(location.search).get('url') || location.href);
-document.getElementById('url-box').textContent = url;
+var url = ${JSON.stringify(originalUrl)};
 function copyUrl() {
     var tip = document.getElementById('tip');
     (navigator.clipboard ? navigator.clipboard.writeText(url) : Promise.reject())
@@ -77,32 +76,27 @@ export default {
         const ua = request.headers.get('User-Agent') || '';
         const url = new URL(request.url);
 
-            // 调试：把UA写到响应头里，方便查看
-    if (url.pathname === '/__ua') {
-        return new Response(ua, {
-            headers: { 'Content-Type': 'text/plain; charset=utf-8' }
-        });
-    }
-        
-        // 已经在拦截页，直接返回拦截页 HTML，避免死循环
-        if (url.pathname === '/__block') {
-            return new Response(BLOCK_PAGE, {
-                headers: { 'Content-Type': 'text/html; charset=utf-8' }
+        // 调试接口：查看UA
+        if (url.pathname === '/__ua') {
+            return new Response(ua, {
+                headers: { 'Content-Type': 'text/plain; charset=utf-8' }
             });
         }
 
         // 跳过静态资源
         const isStatic = /\.(css|js|png|jpg|jpeg|gif|svg|ico|woff|woff2|ttf|webp|avif|json|xml|txt)$/i.test(url.pathname);
 
-        // 检测微信/QQ
+        // 检测微信/QQ，直接返回拦截页（不做重定向，避免微信拦截302）
         const isBlocked = /MicroMessenger|QQ\//i.test(ua);
 
         if (isBlocked && !isStatic) {
-            const blockUrl = `${url.origin}/__block?url=${encodeURIComponent(request.url)}`;
-            return Response.redirect(blockUrl, 302);
+            return new Response(BLOCK_PAGE(request.url), {
+                status: 200,
+                headers: { 'Content-Type': 'text/html; charset=utf-8' }
+            });
         }
 
-        // 正常放行，交给静态资源处理
+        // 正常放行
         return env.ASSETS.fetch(request);
     }
 };
