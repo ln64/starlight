@@ -53,10 +53,16 @@ h1 { font-size: 20px; color: #1a73e8; margin-bottom: 10px; font-weight: 600; }
     <div class="tip" id="tip">✅ 已复制，请打开浏览器粘贴访问</div>
 </div>
 <script>
-var params = new URLSearchParams(window.location.search);
-var url = params.get('url') || '';
-if (!url) url = document.referrer || window.location.href;
-if (url.indexOf('wechat-block.html') !== -1) url = 'https://doc.cs64.ink/';
+function getParam(name) {
+    var search = window.location.search;
+    var idx = search.indexOf(name + '=');
+    if (idx === -1) return '';
+    var val = search.substring(idx + name.length + 1);
+    var end = val.indexOf('&');
+    return decodeURIComponent(end === -1 ? val : val.substring(0, end));
+}
+var url = getParam('url') || document.referrer || 'https://doc.cs64.ink/';
+if (url.indexOf('wechat-block') !== -1) url = 'https://doc.cs64.ink/';
 document.getElementById('url-box').textContent = url;
 
 function copyUrl() {
