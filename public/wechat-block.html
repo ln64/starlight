@@ -54,15 +54,14 @@ h1 { font-size: 20px; color: #1a73e8; margin-bottom: 10px; font-weight: 600; }
 </div>
 <script>
 function getParam(name) {
-    var search = window.location.search;
-    var idx = search.indexOf(name + '=');
+    var href = window.location.href;
+    var key = name + '=';
+    var idx = href.indexOf(key);
     if (idx === -1) return '';
-    var val = search.substring(idx + name.length + 1);
-    var end = val.indexOf('&');
-    return decodeURIComponent(end === -1 ? val : val.substring(0, end));
+    return href.substring(idx + key.length);
 }
-var url = getParam('url') || document.referrer || 'https://doc.cs64.ink/';
-if (url.indexOf('wechat-block') !== -1) url = 'https://doc.cs64.ink/';
+var url = getParam('url') || 'https://doc.cs64.ink/';
+if (!url || url.indexOf('wechat-block') !== -1) url = 'https://doc.cs64.ink/';
 document.getElementById('url-box').textContent = url;
 
 function copyUrl() {
