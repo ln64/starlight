@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>请在浏览器中打开</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+    font-family: "Microsoft Yahei", Arial, sans-serif;
+    background: linear-gradient(135deg, #e3f3ff 0%, #c7e7ff 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+.card {
+    background: white;
+    border-radius: 16px;
+    padding: 40px 30px;
+    max-width: 380px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 4px 30px rgba(42,133,179,0.15);
+    border: 2px solid #c7e7ff;
+}
+.icon {
+    font-size: 64px;
+    margin-bottom: 20px;
+    display: block;
+}
+h1 {
+    font-size: 20px;
+    color: #2a85b3;
+    margin-bottom: 12px;
+    font-weight: 600;
+}
+p {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+.steps {
+    background: #f0f8ff;
+    border-radius: 10px;
+    padding: 16px;
+    margin-bottom: 24px;
+    text-align: left;
+}
+.steps p {
+    margin-bottom: 0;
+    font-size: 13px;
+    color: #444;
+}
+.step {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+.step:last-child { margin-bottom: 0; }
+.step-num {
+    background: #2a85b3;
+    color: white;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    flex-shrink: 0;
+    margin-top: 1px;
+}
+.step-text { font-size: 13px; color: #444; line-height: 1.6; }
+.url-box {
+    background: #f8f8f8;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 12px 14px;
+    font-size: 13px;
+    color: #333;
+    word-break: break-all;
+    text-align: left;
+    margin-bottom: 12px;
+    cursor: pointer;
+    position: relative;
+}
+.copy-btn {
+    display: block;
+    width: 100%;
+    background: #2a85b3;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 13px;
+    font-size: 15px;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: 500;
+    transition: background 0.2s;
+}
+.copy-btn:active { background: #1a6590; }
+.copied {
+    color: #27ae60;
+    font-size: 13px;
+    margin-top: 10px;
+    display: none;
+}
+</style>
+</head>
+<body>
+<div class="card">
+    <span class="icon">🔗</span>
+    <h1>请在浏览器中打开</h1>
+    <p>此链接不支持在微信/QQ中直接访问，请复制链接后用浏览器打开。</p>
+
+    <div class="steps">
+        <div class="step">
+            <div class="step-num">1</div>
+            <div class="step-text">点击下方「复制链接」按钮</div>
+        </div>
+        <div class="step">
+            <div class="step-num">2</div>
+            <div class="step-text">打开手机浏览器（Safari / Chrome / 系统浏览器）</div>
+        </div>
+        <div class="step">
+            <div class="step-num">3</div>
+            <div class="step-text">粘贴链接到地址栏，即可正常访问</div>
+        </div>
+    </div>
+
+    <div class="url-box" id="url-display">正在获取链接...</div>
+    <button class="copy-btn" onclick="copyUrl()">📋 复制链接</button>
+    <div class="copied" id="copied-tip">✅ 已复制，请打开浏览器粘贴访问</div>
+</div>
+
+<script>
+// 从 referrer 或 URL 参数获取原始链接
+var originalUrl = '';
+var urlParam = new URLSearchParams(window.location.search).get('url');
+if (urlParam) {
+    originalUrl = decodeURIComponent(urlParam);
+} else if (document.referrer) {
+    originalUrl = document.referrer;
+} else {
+    originalUrl = window.location.href.replace('/wechat-block.html', '');
+}
+
+document.getElementById('url-display').textContent = originalUrl;
+
+function copyUrl() {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(originalUrl).then(showCopied);
+    } else {
+        // 兼容旧版
+        var ta = document.createElement('textarea');
+        ta.value = originalUrl;
+        ta.style.position = 'fixed';
+        ta.style.opacity = '0';
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+        showCopied();
+    }
+}
+
+function showCopied() {
+    var tip = document.getElementById('copied-tip');
+    tip.style.display = 'block';
+    setTimeout(function(){ tip.style.display = 'none'; }, 3000);
+}
+</script>
+</body>
+</html>
