@@ -48,35 +48,32 @@ h1 { font-size: 20px; color: #1a73e8; margin-bottom: 10px; font-weight: 600; }
         <div class="step"><div class="step-num">2</div><div class="step-text">打开手机浏览器（Safari / Chrome / 系统浏览器）</div></div>
         <div class="step"><div class="step-num">3</div><div class="step-text">粘贴到地址栏即可正常访问</div></div>
     </div>
-    <div class="url-box" id="url-box">获取链接中...</div>
+    <div class="url-box" id="url-box">https://doc.cs64.ink/</div>
     <button class="copy-btn" onclick="copyUrl()">📋 复制链接</button>
     <div class="tip" id="tip">✅ 已复制，请打开浏览器粘贴访问</div>
 </div>
 <script>
-function getParam(name) {
-    var href = window.location.href;
-    var key = name + '=';
-    var idx = href.indexOf(key);
-    if (idx === -1) return '';
-    return href.substring(idx + key.length);
-}
-var url = getParam('url') || 'https://doc.cs64.ink/';
-if (!url || url.indexOf('wechat-block') !== -1) url = 'https://doc.cs64.ink/';
-document.getElementById('url-box').textContent = url;
+var url = 'https://doc.cs64.ink/';
 
 function copyUrl() {
     var tip = document.getElementById('tip');
-    (navigator.clipboard ? navigator.clipboard.writeText(url) : Promise.reject())
-        .catch(function() {
-            var t = document.createElement('textarea');
-            t.value = url; t.style.position = 'fixed'; t.style.opacity = '0';
-            document.body.appendChild(t); t.select();
-            document.execCommand('copy'); document.body.removeChild(t);
-        })
-        .finally(function() {
-            tip.style.display = 'block';
-            setTimeout(function() { tip.style.display = 'none'; }, 3000);
-        });
+    if (navigator.clipboard) {
+        navigator.clipboard.writeText(url).then(showTip).catch(fallback);
+    } else {
+        fallback();
+    }
+}
+function fallback() {
+    var t = document.createElement('textarea');
+    t.value = url; t.style.position = 'fixed'; t.style.opacity = '0';
+    document.body.appendChild(t); t.select();
+    document.execCommand('copy'); document.body.removeChild(t);
+    showTip();
+}
+function showTip() {
+    var tip = document.getElementById('tip');
+    tip.style.display = 'block';
+    setTimeout(function() { tip.style.display = 'none'; }, 3000);
 }
 </script>
 </body>
