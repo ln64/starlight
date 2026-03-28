@@ -77,6 +77,13 @@ export default {
         const ua = request.headers.get('User-Agent') || '';
         const url = new URL(request.url);
 
+            // 调试：把UA写到响应头里，方便查看
+    if (url.pathname === '/__ua') {
+        return new Response(ua, {
+            headers: { 'Content-Type': 'text/plain; charset=utf-8' }
+        });
+    }
+        
         // 已经在拦截页，直接返回拦截页 HTML，避免死循环
         if (url.pathname === '/__block') {
             return new Response(BLOCK_PAGE, {
