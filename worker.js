@@ -73,15 +73,11 @@ function copyUrl() {
 
 export default {
     async fetch(request, env) {
-        const ua = request.headers.get('User-Agent') || '';
-        const url = new URL(request.url);
-
-        // 调试接口：查看UA
-        if (url.pathname === '/__ua') {
-            return new Response(ua, {
-                headers: { 'Content-Type': 'text/plain; charset=utf-8' }
-            });
-        }
+        return new Response('Worker is running: ' + (request.headers.get('User-Agent') || 'no UA'), {
+            headers: { 'Content-Type': 'text/plain; charset=utf-8' }
+        });
+    }
+};
 
         // 跳过静态资源
         const isStatic = /\.(css|js|png|jpg|jpeg|gif|svg|ico|woff|woff2|ttf|webp|avif|json|xml|txt)$/i.test(url.pathname);
