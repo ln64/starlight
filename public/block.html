@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- v3 -->
+<!-- v4 -->
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
@@ -33,10 +33,27 @@ h1 { font-size: 20px; color: #1a73e8; margin-bottom: 10px; font-weight: 600; }
 .step:last-child { margin-bottom: 0; }
 .step-num { background: #1a73e8; color: white; width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; flex-shrink: 0; margin-top: 1px; }
 .step-text { font-size: 13px; color: #444; line-height: 1.6; }
-.url-box { background: #f5f5f5; border: 1px solid #ddd; border-radius: 8px; padding: 11px 14px; font-size: 13px; color: #333; word-break: break-all; text-align: left; margin-bottom: 12px; }
-.copy-btn { display: block; width: 100%; background: #1a73e8; color: white; border: none; border-radius: 8px; padding: 13px; font-size: 15px; cursor: pointer; font-weight: 500; font-family: inherit; }
-.copy-btn:active { background: #1557b0; }
-.tip { color: #34a853; font-size: 13px; margin-top: 10px; display: none; }
+.url-box {
+    background: #f5f5f5;
+    border: 2px solid #1a73e8;
+    border-radius: 8px;
+    padding: 14px;
+    font-size: 15px;
+    color: #1a73e8;
+    word-break: break-all;
+    text-align: center;
+    margin-bottom: 12px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+}
+.hint {
+    background: #e8f5e9;
+    border-radius: 8px;
+    padding: 12px;
+    font-size: 13px;
+    color: #2e7d32;
+    text-align: center;
+}
 </style>
 </head>
 <body>
@@ -45,38 +62,12 @@ h1 { font-size: 20px; color: #1a73e8; margin-bottom: 10px; font-weight: 600; }
     <h1>请在浏览器中打开</h1>
     <p class="desc">此链接不支持在微信 / QQ 中直接访问，请复制后用浏览器打开。</p>
     <div class="steps">
-        <div class="step"><div class="step-num">1</div><div class="step-text">点击下方「复制链接」按钮</div></div>
+        <div class="step"><div class="step-num">1</div><div class="step-text">长按下方蓝色链接，选择「复制」</div></div>
         <div class="step"><div class="step-num">2</div><div class="step-text">打开手机浏览器（Safari / Chrome / 系统浏览器）</div></div>
         <div class="step"><div class="step-num">3</div><div class="step-text">粘贴到地址栏即可正常访问</div></div>
     </div>
-    <div class="url-box" id="url-box">https://doc.cs64.ink/</div>
-    <button class="copy-btn" onclick="copyUrl()">📋 复制链接</button>
-    <div class="tip" id="tip">✅ 已复制，请打开浏览器粘贴访问</div>
+    <div class="url-box">https://doc.cs64.ink/</div>
+    <div class="hint">👆 长按上方链接即可复制</div>
 </div>
-<script>
-var url = 'https://doc.cs64.ink/';
-document.getElementById('url-box').textContent = url;
-
-function copyUrl() {
-    var tip = document.getElementById('tip');
-    if (navigator.clipboard) {
-        navigator.clipboard.writeText(url).then(showTip).catch(fallback);
-    } else {
-        fallback();
-    }
-}
-function fallback() {
-    var t = document.createElement('textarea');
-    t.value = url; t.style.position = 'fixed'; t.style.opacity = '0';
-    document.body.appendChild(t); t.select();
-    document.execCommand('copy'); document.body.removeChild(t);
-    showTip();
-}
-function showTip() {
-    var tip = document.getElementById('tip');
-    tip.style.display = 'block';
-    setTimeout(function() { tip.style.display = 'none'; }, 3000);
-}
-</script>
 </body>
 </html>
