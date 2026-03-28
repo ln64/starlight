@@ -1,0 +1,101 @@
+const BLOCK_PAGE = `<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>请在浏览器中打开</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+    font-family: "Microsoft Yahei", Arial, sans-serif;
+    background: linear-gradient(135deg, #f0f4ff 0%, #e8f0fe 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+.card {
+    background: white;
+    border-radius: 16px;
+    padding: 40px 28px;
+    max-width: 380px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 4px 30px rgba(0,0,0,0.10);
+}
+.icon { font-size: 60px; margin-bottom: 18px; display: block; }
+h1 { font-size: 20px; color: #1a73e8; margin-bottom: 10px; font-weight: 600; }
+.desc { font-size: 14px; color: #666; line-height: 1.8; margin-bottom: 20px; }
+.steps { background: #f8f9ff; border-radius: 10px; padding: 16px; margin-bottom: 20px; text-align: left; }
+.step { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 10px; }
+.step:last-child { margin-bottom: 0; }
+.step-num { background: #1a73e8; color: white; width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; flex-shrink: 0; margin-top: 1px; }
+.step-text { font-size: 13px; color: #444; line-height: 1.6; }
+.url-box { background: #f5f5f5; border: 1px solid #ddd; border-radius: 8px; padding: 11px 14px; font-size: 13px; color: #333; word-break: break-all; text-align: left; margin-bottom: 12px; }
+.copy-btn { display: block; width: 100%; background: #1a73e8; color: white; border: none; border-radius: 8px; padding: 13px; font-size: 15px; cursor: pointer; font-weight: 500; font-family: inherit; }
+.tip { color: #34a853; font-size: 13px; margin-top: 10px; display: none; }
+</style>
+</head>
+<body>
+<div class="card">
+    <span class="icon">🔗</span>
+    <h1>请在浏览器中打开</h1>
+    <p class="desc">此链接不支持在微信 / QQ 中直接访问，请复制后用浏览器打开。</p>
+    <div class="steps">
+        <div class="step"><div class="step-num">1</div><div class="step-text">点击下方「复制链接」按钮</div></div>
+        <div class="step"><div class="step-num">2</div><div class="step-text">打开手机浏览器（Safari / Chrome / 系统浏览器）</div></div>
+        <div class="step"><div class="step-num">3</div><div class="step-text">粘贴到地址栏即可正常访问</div></div>
+    </div>
+    <div class="url-box" id="url-box">加载中...</div>
+    <button class="copy-btn" onclick="copyUrl()">📋 复制链接</button>
+    <div class="tip" id="tip">✅ 已复制，请打开浏览器粘贴访问</div>
+</div>
+<script>
+var url = decodeURIComponent(new URLSearchParams(location.search).get('url') || location.href);
+document.getElementById('url-box').textContent = url;
+function copyUrl() {
+    var tip = document.getElementById('tip');
+    (navigator.clipboard ? navigator.clipboard.writeText(url) : Promise.reject())
+        .catch(function() {
+            var t = document.createElement('textarea');
+            t.value = url; t.style.position = 'fixed'; t.style.opacity = '0';
+            document.body.appendChild(t); t.select();
+            document.execCommand('copy'); document.body.removeChild(t);
+        })
+        .finally(function() {
+            tip.style.display = 'block';
+            setTimeout(function(){ tip.style.display = 'none'; }, 3000);
+        });
+}
+</script>
+</body>
+</html>`;
+
+export default {
+    async fetch(request, env) {
+        const ua = request.headers.get('User-Agent') || '';
+        const url = new URL(request.url);
+
+        // 已经在拦截页，直接返回拦截页 HTML，避免死循环
+        if (url.pathname === '/__block') {
+            return new Response(BLOCK_PAGE, {
+                headers: { 'Content-Type': 'text/html; charset=utf-8' }
+            });
+        }
+
+        // 跳过静态资源
+        const isStatic = /\.(css|js|png|jpg|jpeg|gif|svg|ico|woff|woff2|ttf|webp|avif|json|xml|txt)$/i.test(url.pathname);
+
+        // 检测微信/QQ
+        const isBlocked = /MicroMessenger|QQ\//i.test(ua);
+
+        if (isBlocked && !isStatic) {
+            const blockUrl = `${url.origin}/__block?url=${encodeURIComponent(request.url)}`;
+            return Response.redirect(blockUrl, 302);
+        }
+
+        // 正常放行，交给静态资源处理
+        return env.ASSETS.fetch(request);
+    }
+};
