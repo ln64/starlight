@@ -11,8 +11,7 @@ title: 往期资源获取
   <img src="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAER6EhpvrSb54psqo7cIYfWpjHs9VAXqAACCCAAAjFS-VXfDxhImJB4YToE.png" alt="展示" width="350" />
 </p>
 
-找清水文，可以直接去这个网站，不用找我：  
-[https://www.aqxsw888.com](https://www.aqxsw888.com)
+找清水文，可以直接去这个网站，不用找我：  [https://www.aqxsw888.com](https://www.aqxsw888.com)
 
 ---
 <p align="center">
