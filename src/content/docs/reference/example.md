@@ -6,8 +6,7 @@ title: 往期资源获取
 
 所有资源都可以付费后在资源站下载，网站有搜索功能，资源已按时间和类型分类好。
 
-网站搜索功能使试用：  
-[点我搜索](https://cs64.fun/2026/04/04/%e8%af%95%e7%94%a8%e6%90%9c%e7%b4%a2%e5%8a%9f%e8%83%bd/)
+网站搜索功能使试用：  [点我搜索](https://cs64.fun/2026/04/04/%e8%af%95%e7%94%a8%e6%90%9c%e7%b4%a2%e5%8a%9f%e8%83%bd/)
 <p align="center">
   <img src="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAER6EhpvrSb54psqo7cIYfWpjHs9VAXqAACCCAAAjFS-VXfDxhImJB4YToE.png" alt="展示" width="350" />
 </p>
