@@ -49,7 +49,7 @@ title: 往期资源获取
 ⑤不定期举行邀请码抽奖
 
 <p align="center">
-  <img src="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAES8vBp3JscutE2iZrLTTe1EScwhv4CVwACEicAAp3j6Fa-YTaS_CWNvDsE.jpg" alt="展示" width="350" />
+  <img src="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAES8vBp3JscutE2iZrLTTe1EScwhv4CVwACEicAAp3j6Fa-YTaS_CWNvDsE.jpg" alt="展示" width="320" />
 </p>
 
 **注意：**
